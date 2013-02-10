@@ -1,0 +1,11 @@
+var ${1:object_name} = {
+	defaults: {},
+	init: function($elem, options) {
+        var self = this;
+        if ($elem === undefined || !$elem.length) {
+            return false;
+        }
+        this.$elem = $elem;
+        this.options = $.extend({},this.defaults,options);
+	}
+};
