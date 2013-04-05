@@ -1,18 +1,54 @@
+# anonymous function
+snippet anon
+	function(${1}) {${2}}
+
+# slice arguments
+snippet arguments
+	Array.prototype.slice.call(arguments)${1}
+
+# console.log
+snippet log
+	console.log(${1});
+
+# use strict
+snippet strict
+	'use strict';${1}
+
+# force new
+snippet forcenew
+	if ((!this instanceof arguments.callee)) {
+		return new arguments.callee(${1:arguments});
+	}
+	${2}
+
+# ternary
+snippet ternary
+${1:/* condition */} ? ${2:a} : ${3:b}
+
+# for loop
+snippet for
+	for (var ${3:i} = 0, ${2:l} = ${1:arr}.length; $3 < $2; $3++) {
+		${4}
+	}
+
 # if
 snippet if
 	if (${1:true}) {
 		${2}
 	}
+
 # else
 snippet else
 	else {
 		${1}
 	}
+
 # else if
 snippet elif
 	else if (${1}) {
 		${2}
 	}
+
 # switch
 snippet switch
 	switch (${1:expression}) {
@@ -23,28 +59,38 @@ snippet switch
 		default:
 			${2}
 	}
+
 # case
 snippet case
 	case '${1:case}':
 		${2}
 		break;
 	${3}
+
 # while (...) {...}
-snippet wh
+snippet while
 	while (${1:/* condition */}) {
 		${2}
 	}
+
 # do...while
 snippet do
 	do {
 		${2}
 	} while (${1:/* condition */});
+
 # Get Elements By Tag Name
 snippet getElt
 	getElementsByTagName('${2}')${3}
+
 # Get Elements By Name
 snippet getEln
 	getElementsByName('${2}')${3}
+
 # Get Element
 snippet getEli
 	getElementById('${2}')${3}
+
+# setTimeout
+snippet timeout
+	setTimeout(function() { ${1} }, ${2:10});
