@@ -2,6 +2,65 @@
 snippet anon
 	function(${1}) {${2}}
 
+# function
+snippet fun
+	function ${1:function_name}(${2}) {
+		${3}
+	}
+
+# var function
+snippet vfun
+	var ${1:function_name} = function(${2}) {
+		${3}
+	};
+
+# method
+snippet met
+	${1:method_name}: function(${2}) {
+		${4}
+	}${3:,}
+
+# prototype
+snippet proto
+	${1:class_name}.prototype.${2:method_name} = function(${3}) {
+	    ${4}
+	};
+
+#obj
+snippet obj
+	${2:var }${1:object_name} = {${3}};
+
+#define backbone
+snippet defbb
+	define(['jquery', 'underscore', 'backbone'${1}], function($, _, Backbone${2}){
+		'use strict';
+		${3}
+	});
+
+# define backbone collection
+snippet defbbc
+	define(['jquery', 'underscore', 'backbone', 'models/${1:mymodel}'], function($, _, Backbone, ${2:Model}){
+		'use strict';
+		return Backbone.Collection.extend({
+			model: $2,
+			url: '${3:api/}'
+		});${4}
+	});
+
+# define backbone model
+snippet defbbm
+	define(['jquery', 'underscore', 'backbone'], function($, _, Backbone){
+		'use strict';
+		return Backbone.Model.extend();${1}
+	});
+
+# define backbone view
+snippet defbbv
+	define(['jquery', 'underscore', 'backbone'], function($, _, Backbone){
+		'use strict';
+		return Backbone.View.extend();${1}
+	});
+
 # slice arguments
 snippet arguments
 	Array.prototype.slice.call(arguments)${1}
@@ -23,7 +82,15 @@ snippet forcenew
 
 # ternary
 snippet ternary
-${1:/* condition */} ? ${2:a} : ${3:b}
+	${1:/* condition */} ? ${2:a} : ${3:b}
+
+# return
+snippet ret
+	return ${1};
+
+# self
+snippet self
+	var self = this${1:;}
 
 # for loop
 snippet for
