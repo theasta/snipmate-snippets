@@ -1,3 +1,47 @@
+# Gruntfile skeleton
+snippet skelgruntfile
+	module.exports = function(grunt) {
+		grunt.initConfig({
+			pkg: grunt.file.readJSON('package.json'),
+			jshint: {
+			files: ['gruntfile.js', 'src/**/*.js', 'test/**/*.js'],
+			options: {
+				// options here to override JSHint defaults
+				globals: {
+				jQuery: true,
+				console: true,
+				module: true,
+				document: true
+				}
+			}
+			},
+			watch: {
+			files: ['<%= jshint.files %>'],
+			tasks: ['jshint', 'qunit']
+			}
+		});
+
+		grunt.loadNpmTasks('grunt-contrib-jshint');
+		grunt.loadNpmTasks('grunt-contrib-qunit');
+		grunt.loadNpmTasks('grunt-contrib-watch');
+
+		grunt.registerTask('test', ['jshint', 'qunit']);
+
+		grunt.registerTask('default', ['test',]);
+	};
+
+# Array max
+snippet amax
+    Math.max.apply(Math, ${1:myArray});${2}
+
+# Array min
+snippet amin
+    Math.min.apply(Math, ${1:myArray});${2}
+
+# module.exports
+snippet exports
+    module.exports = ${1:mymodule};${2}
+
 # anonymous function
 snippet anon
 	function(${1}) {${2}}
@@ -90,7 +134,7 @@ snippet ret
 
 # self
 snippet self
-	var self = this${1:;}
+	var self = this;${1}
 
 # for loop
 snippet for
@@ -119,12 +163,11 @@ snippet elif
 # switch
 snippet switch
 	switch (${1:expression}) {
-		case '${3:case}':
-			${4}
+		case '${2:case}':
+			${3}
 			break;
-		${5}
 		default:
-			${2}
+			${4}
 	}
 
 # case
