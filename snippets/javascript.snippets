@@ -1,46 +1,42 @@
 # Gruntfile skeleton
-snippet skelgruntfile
+snippet gruntfile
 	module.exports = function(grunt) {
 		grunt.initConfig({
 			pkg: grunt.file.readJSON('package.json'),
 			jshint: {
-			files: ['gruntfile.js', 'src/**/*.js', 'test/**/*.js'],
-			options: {
-				// options here to override JSHint defaults
-				globals: {
-				jQuery: true,
-				console: true,
-				module: true,
-				document: true
+				files: ['gruntfile.js'],
+				options: {
+					globals: {
+						jQuery: true,
+						console: true,
+						module: true,
+						document: true
+					}
 				}
-			}
 			},
 			watch: {
-			files: ['<%= jshint.files %>'],
-			tasks: ['jshint', 'qunit']
+				files: ['<%= jshint.files %>'],
+				tasks: ['jshint']
 			}
 		});
 
 		grunt.loadNpmTasks('grunt-contrib-jshint');
-		grunt.loadNpmTasks('grunt-contrib-qunit');
 		grunt.loadNpmTasks('grunt-contrib-watch');
 
-		grunt.registerTask('test', ['jshint', 'qunit']);
-
-		grunt.registerTask('default', ['test',]);
+		grunt.registerTask('default', ['jshint']);
 	};
 
 # Array max
 snippet amax
-    Math.max.apply(Math, ${1:myArray});${2}
+	Math.max.apply(Math, ${1:myArray});${2}
 
 # Array min
 snippet amin
-    Math.min.apply(Math, ${1:myArray});${2}
+	Math.min.apply(Math, ${1:myArray});${2}
 
 # module.exports
 snippet exports
-    module.exports = ${1:mymodule};${2}
+	module.exports = ${1:mymodule};${2}
 
 # anonymous function
 snippet anon
@@ -72,7 +68,7 @@ snippet proto
 
 #obj
 snippet obj
-	${2:var }${1:object_name} = {${3}};
+	var ${1:object_name} = {${2}};
 
 #define backbone
 snippet defbb
@@ -125,7 +121,7 @@ snippet forcenew
 	${2}
 
 # ternary
-snippet ternary
+snippet ?
 	${1:/* condition */} ? ${2:a} : ${3:b}
 
 # return
