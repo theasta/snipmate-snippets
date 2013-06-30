@@ -39,6 +39,10 @@ snippet exports
 	module.exports = ${1:mymodule};${2}
 
 # anonymous function
+snippet nanon
+	function(err, ${1:results}) {${2}}
+
+# anonymous function
 snippet anon
 	function(${1}) {${2}}
 
@@ -57,8 +61,8 @@ snippet vfun
 # method
 snippet met
 	${1:method_name}: function(${2}) {
-		${4}
-	}${3:,}
+		${3}
+	}
 
 # prototype
 snippet proto
@@ -107,11 +111,12 @@ snippet arguments
 
 # console.log
 snippet log
-	console.log(${1});
+	console.log('${1}', ${1});
 
 # use strict
-snippet strict
-	'use strict';${1}
+snippet us
+	'use strict';
+	${1}
 
 # force new
 snippet forcenew
@@ -130,7 +135,8 @@ snippet ret
 
 # self
 snippet self
-	var self = this;${1}
+	var self = this;
+	${1}
 
 # for loop
 snippet for
@@ -185,18 +191,4 @@ snippet do
 		${2}
 	} while (${1:/* condition */});
 
-# Get Elements By Tag Name
-snippet getElt
-	getElementsByTagName('${2}')${3}
 
-# Get Elements By Name
-snippet getEln
-	getElementsByName('${2}')${3}
-
-# Get Element
-snippet getEli
-	getElementById('${2}')${3}
-
-# setTimeout
-snippet timeout
-	setTimeout(function() { ${1} }, ${2:10});
